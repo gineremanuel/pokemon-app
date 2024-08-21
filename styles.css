@@ -1,0 +1,133 @@
+html, body {  
+  margin:0px;
+  padding: 0px;
+  height:100%;
+  width: 100%;
+}  
+.home {
+  background-image: url(/assets/pikachu_background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+nav {
+  --ease: all 300ms ease;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 100px;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  list-style: none;
+  transition: var(--ease);
+}
+
+.nav-link {
+  display: inline-block;
+  align-content: center;
+  color: black;
+}
+
+.welcome {
+  text-align: center;
+}
+
+nav p {
+  font-size: 20px;
+}
+
+.welcome h1 {
+  font-weight: bold;
+}
+
+.welcome p {
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.welcome button { 
+  color: white;
+  border-radius: 50px;
+  padding: 10px 30px;
+  border: 1px solid #00c9b9;
+  background-color: #00c9b9;
+  font-size: 13px;
+}
+
+.history h2{
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px
+}
+
+.firstSteps {
+  border-left: 4px solid #00e590;
+  display: flex;
+  margin: 10px 0px;
+}
+
+.imgDate {
+  display: flex;
+  padding: 25px;
+  gap: 10px;
+}
+
+.imgDate p{
+  color: #00e590;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.titleDesc h3 {
+  color: #00e590;
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+.titleDesc p { 
+  font-weight: bold;
+  color: #919191;
+  font-size: 14px;
+}
+
+.gameboy {
+  border-right: 4px solid red;
+  display: flex;
+  margin: 10px 0px;
+}
+
+.imgDate {
+  display: flex;
+  padding: 25px;
+  gap: 10px;
+}
+
+.gameboy .imgDate p{
+  color: red;
+}
+
+.gameboy .titleDesc h3 {
+  color: red;
+}
+
+.pikachu {
+  border-left: 4px solid #f7d846;
+  display: flex;
+  margin: 10px 0px;
+}
+
+.pikachu .imgDate p{
+  color: #f7d846;
+}
+
+.pikachu .titleDesc h3 {
+  color: #f7d846;
+}
+
+.scroll {
+  background-color: #fff;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
