@@ -1,9 +1,12 @@
-html, body {  
+*{  
   margin:0px;
   padding: 0px;
-  height:100%;
+}
+
+body {
+  overflow-x: hidden;
   width: 100%;
-}  
+}
 .home {
   background-image: url(/assets/pikachu_background.png);
   background-repeat: no-repeat;
