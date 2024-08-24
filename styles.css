@@ -3,6 +3,12 @@
   padding: 0px;
 }
 
+:root {
+  --altura_header: 60px;
+  --padding_left_right: 2rem;
+  --ancho_maximo: 1200px;
+}
+
 body {
   overflow-x: hidden;
   width: 100%;
@@ -14,7 +20,7 @@ body {
   height: 100vh;
 }
 
-nav {
+.nav_desktop {
   --ease: all 300ms ease;
   display: flex;
   justify-content: space-between;
@@ -35,9 +41,10 @@ nav {
 
 .welcome {
   text-align: center;
+  padding-top: 5%;
 }
 
-nav p {
+.nav_desktop p {
   font-size: 20px;
 }
 
@@ -133,4 +140,184 @@ nav p {
 .scroll {
   background-color: #fff;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pokedex h1 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  gap: 10px;
+}
+
+.search input {
+  border-radius: 15px;
+  width: 40%;
+}
+
+.search button {
+  padding: 7px 50px;
+  color: white;
+  background-color: #00c9b9;
+  border-radius: 30px;
+  border: 1px solid #00c9b9
+}
+
+/* --------------------------- */
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-content: center;
+  margin: 0px 50px;
+
+}
+.cardContent {
+  border: 1px solid rgba(201,195,201,0.5);
+  border-radius: 20px;
+  padding: 10px 30px;
+  box-shadow: 10px 10px 7px -1px rgba(201,195,201,0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 20%;
+  margin: 25px;
+}
+
+.cardContent img {
+  border-radius: 100px;
+  border: 1px solid #b9dadb;
+  background-color: #b9dadb;
+  margin-bottom: 20px;
+  
+}
+
+.cardContent h3 {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.cardContent p {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 15px;
+
+}
+
+.addFavBtn {
+  border-radius: 20px;
+  border: 1px solid #00c9b9;
+  background-color: #00c9b9;
+  color: white;
+  padding: 10px 35px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+.removeFavBtn {
+  background-color: white;
+  color: #00c9b9;
+  border-radius: 20px;
+  border: 2px solid #00c9b9;
+  padding: 10px 35px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+@media (max-width: 1000px) {
+  .nav_desktop { 
+    display: none;
+  }
+  .li_icon {
+    cursor: pointer;
+  }
+  .cardContent {
+    width: 80%;
+    margin: 10px;
+    height: auto;
+  }
+  .search {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-bottom: 30px;
+  }
+  .search input {
+    width: 60%;
+    height: 4vh;
+    border-radius: 50px;
+  }
+  .search button {
+    width: 35%;
+    align-self: center;
+    text-align: center;
+  }
+  .header { 
+    height: var(--altura_header);
+    display: block;
+    padding: 30px 0px
+  
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  ol, ul, li {
+    list-style: none;
+  }
+  
+  .navbar {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 var(--padding_left_right);
+  }
+  
+  .ul_links {
+    width: 100%;
+    top: var(--altura_header);
+    background-color: #fff;
+    display: flex;
+    left: 0;
+    justify-content: end;
+    flex-direction: column;
+    align-items: center;
+    height: 0;
+    overflow: hidden;
+    transition: all .3s;
+    z-index: 99999;
+  }
+  
+  .links {
+    color: black;
+    font-weight: bold;
+  }
+  
+  #hamburguer_menu:checked + .ul_links {
+    height: 25vh;
+  }
+  
+  .title {
+    margin-top: 80px;
+    font-size: 50px;
+    margin-bottom: 30px;
+  }
+  
+  .navbar li {
+    font-weight: bold;
+    font-size: 20px;
+  }
 }
