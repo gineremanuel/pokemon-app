@@ -1,7 +1,7 @@
 let myFavs = []
 const d = document,
-  pokedexURL = "pokedex.html",
-  favsURL = "favs.html",
+  pokedexURL = 'https://gineremanuel.github.io/pokemon-app/pokedex.html',
+  favsURL = `https://gineremanuel.github.io/pokemon-app/favs.html`,
   $fragment = d.createDocumentFragment(),
   $searchInput = d.getElementById('search'),
   $searchBtn = d.querySelector('.searchBtn'),
@@ -112,8 +112,6 @@ const d = document,
 
 
   d.addEventListener('DOMContentLoaded', async(e) => {
-    console.log(location.href)
-    console.log(window.location)
     if(e.target.location.pathname === pokedexURL) {
       const pokemons = await getAllPokemons();
       await createCards(pokemons);
