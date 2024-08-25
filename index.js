@@ -112,10 +112,10 @@ const d = document,
 
 
   d.addEventListener('DOMContentLoaded', async(e) => {
-    if(e.target.location.pathname === pokedexURL) {
+    if(location.href === pokedexURL) {
       const pokemons = await getAllPokemons();
       await createCards(pokemons);
-    } else if (e.target.location.pathname === favsURL) {
+    } else if (location.href === favsURL) {
       const pokemons = await getFavs();
       await createCards(pokemons)
     }
