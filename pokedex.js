@@ -7,15 +7,23 @@ const d = document,
   $searchBtn = d.querySelector('.searchBtn'),
   $cards = d.querySelector('.cards'),
   getAllPokemons = async() => {
-    let result = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=150`)
-    return result.data.results
+    try {
+      let result = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=150`)
+      return result.data.results
+    } catch (error) {
+      console.log(error)
+    }
   },
   getSelectedPokemons = async(query) => {
-    let pokemons = await getAllPokemons();
-    let filteredPokemons = pokemons.filter(pokemon => {
+    try {
+      let pokemons = await getAllPokemons();
+      let filteredPokemons = pokemons.filter(pokemon => {
       return pokemon.name.toLowerCase().startsWith(query.toLowerCase())
     })
     return filteredPokemons
+    } catch (error) {
+      console.log(error)
+    }
   },
   normalizePokeData = async(url) => {
     try {
@@ -35,40 +43,44 @@ const d = document,
     }
     },
   createCards = async(pokemons) => {
-    pokemons.forEach(async(el) => {
-      let pokemon = await normalizePokeData(el.url)
-      const $pokeCard = d.createElement('card'),
-        $pokeImg = d.createElement('img'),
-        $pokeName = d.createElement('h3'),
-        $pokeTypes = d.createElement('p'),
-        $addFavBtn = d.createElement('button'),
-        $removeFavBtn = d.createElement('button')
-      $pokeCard.classList.add('cardContent')
-      $addFavBtn.classList.add(`addBtnId${pokemon.id}`, 'addFavBtn')
-      $removeFavBtn.classList.add(`removeBtnId${pokemon.id}`, 'removeFavBtn')
-      myFavs = []
-      myFavs = JSON.parse(localStorage.getItem('myFavs')) || [];
-
-      if(myFavs.indexOf(pokemon.id.toString()) === -1) $removeFavBtn.classList.add('hidden')
-      else $addFavBtn.classList.add('hidden')
-      
-      $addFavBtn.dataset.id = pokemon.id
-      $removeFavBtn.dataset.id = pokemon.id
-      $pokeImg.setAttribute('src', pokemon.image)
-      $pokeName.innerHTML = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
-      $pokeTypes.innerHTML = `Type: ${pokemon.type}`
-      $removeFavBtn.textContent = 'Remove of favs'
-      $addFavBtn.textContent = 'Add to favs'
-      $pokeCard.appendChild($pokeImg)
-      $pokeCard.appendChild($pokeName)
-      $pokeCard.appendChild($pokeTypes)
-      $pokeCard.appendChild($addFavBtn)
-      $pokeCard.appendChild($removeFavBtn)
-      $fragment.appendChild($pokeCard)
-    })
-    setTimeout(() => {
-      $cards.appendChild($fragment);;
-    }, 1000);
+    try {
+      pokemons.forEach(async(el) => {
+        let pokemon = await normalizePokeData(el.url)
+        const $pokeCard = d.createElement('card'),
+          $pokeImg = d.createElement('img'),
+          $pokeName = d.createElement('h3'),
+          $pokeTypes = d.createElement('p'),
+          $addFavBtn = d.createElement('button'),
+          $removeFavBtn = d.createElement('button')
+        $pokeCard.classList.add('cardContent')
+        $addFavBtn.classList.add(`addBtnId${pokemon.id}`, 'addFavBtn')
+        $removeFavBtn.classList.add(`removeBtnId${pokemon.id}`, 'removeFavBtn')
+        myFavs = []
+        myFavs = JSON.parse(localStorage.getItem('myFavs')) || [];
+  
+        if(myFavs.indexOf(pokemon.id.toString()) === -1) $removeFavBtn.classList.add('hidden')
+        else $addFavBtn.classList.add('hidden')
+        
+        $addFavBtn.dataset.id = pokemon.id
+        $removeFavBtn.dataset.id = pokemon.id
+        $pokeImg.setAttribute('src', pokemon.image)
+        $pokeName.innerHTML = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+        $pokeTypes.innerHTML = `Type: ${pokemon.type}`
+        $removeFavBtn.textContent = 'Remove of favs'
+        $addFavBtn.textContent = 'Add to favs'
+        $pokeCard.appendChild($pokeImg)
+        $pokeCard.appendChild($pokeName)
+        $pokeCard.appendChild($pokeTypes)
+        $pokeCard.appendChild($addFavBtn)
+        $pokeCard.appendChild($removeFavBtn)
+        $fragment.appendChild($pokeCard)
+      })
+      setTimeout(() => {
+        $cards.appendChild($fragment);;
+      }, 1000);
+    } catch (error) {
+      console.log(error)
+    }
   },
   getFavs = () => {
     myFavs = [];
