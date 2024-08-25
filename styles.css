@@ -14,7 +14,7 @@ body {
   width: 100%;
 }
 .home {
-  background-image: url(/assets/pikachu_background.png);
+  background-image: url(assets/pikachu_background.png);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
