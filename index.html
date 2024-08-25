@@ -13,12 +13,40 @@
       <li><img src="/assets/pokeball-icon2.png" alt="" width="35px" height="35px"> Pokedex</li>
       <div class="">
         <a href="#home" class="nav-link">Home</a>
-        <a href="" class="nav-link">History</a>
+        <a href="#history" class="nav-link">History</a>
         <a href="" class="nav-link">Videos</a>
         <a href="pokedex.html" class="nav-link">Pokedex</a>
-        <a href="" class="nav-link">My favs</a>
+        <a href="favs.html" class="nav-link">My favs</a>
       </div>
     </nav>
+    <header class="header hidden">
+      <nav class="navbar">
+        <li><img src="/assets/pokeball-icon2.png" alt="" width="35px" height="35px"> Pokedex</li>
+        <label class="hamburguerMenu" for="hamburguer_menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="35" class="li_icon" height="35" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+          </svg>
+        </label>
+        <input type="checkbox" class="hidden" id="hamburguer_menu">
+        <ul class="ul_links">
+          <li class="li_links">
+            <a href="index.html" class="links">Home</a>
+          </li>
+          <li class="li_links">
+            <a href="index.html#history" class="links">History</a>
+          </li>
+          <li class="li_links">
+            <a href="" class="links">Videos</a>
+          </li>
+          <li class="li_links">
+            <a href="pokedex.html" class="links">Pokedex</a>
+          </li>
+          <li class="li_links">
+            <a href="#" class="links">My favs</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <div class="row">
       <div class="col-6"></div>
       <div class="welcome col-6">
@@ -28,7 +56,7 @@
       </div>
     </div>
   </section>
-  <section class="container history">
+  <section id="history" class="container history">
     <h2>Pokemon History</h2>
     <div class="firstSteps">
       <div class="imgDate">

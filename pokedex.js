@@ -1,5 +1,7 @@
 let myFavs = []
 const d = document,
+  pokedexURL = "/pokedex.html",
+  favsURL = "/favs.html",
   $fragment = d.createDocumentFragment(),
   $searchInput = d.getElementById('search'),
   $searchBtn = d.querySelector('.searchBtn'),
@@ -16,17 +18,21 @@ const d = document,
     return filteredPokemons
   },
   normalizePokeData = async(url) => {
-    let result = await axios.get(url)
-    const pokemon = {
-      name: result.data.name,
-      id: result.data.id,
-      image: result.data.sprites.front_default,
-      type: []
+    try {
+      let result = await axios.get(url)
+      const pokemon = {
+        name: result.data.name,
+        id: result.data.id,
+        image: result.data.sprites.front_default,
+        type: []
+      }
+      result.data.types.forEach(el => {
+        pokemon.type.push(el.type.name)
+      })
+      return pokemon
+    } catch (error) {
+      console.log(error)
     }
-    result.data.types.forEach(el => {
-      pokemon.type.push(el.type.name)
-    })
-    return pokemon
     },
   createCards = async(pokemons) => {
     pokemons.forEach(async(el) => {
@@ -39,7 +45,13 @@ const d = document,
         $removeFavBtn = d.createElement('button')
       $pokeCard.classList.add('cardContent')
       $addFavBtn.classList.add(`addBtnId${pokemon.id}`, 'addFavBtn')
-      $removeFavBtn.classList.add(`removeBtnId${pokemon.id}`, 'hidden', 'removeFavBtn')
+      $removeFavBtn.classList.add(`removeBtnId${pokemon.id}`, 'removeFavBtn')
+      myFavs = []
+      myFavs = JSON.parse(localStorage.getItem('myFavs')) || [];
+
+      if(myFavs.indexOf(pokemon.id.toString()) === -1) $removeFavBtn.classList.add('hidden')
+      else $addFavBtn.classList.add('hidden')
+      
       $addFavBtn.dataset.id = pokemon.id
       $removeFavBtn.dataset.id = pokemon.id
       $pokeImg.setAttribute('src', pokemon.image)
@@ -58,6 +70,18 @@ const d = document,
       $cards.appendChild($fragment);;
     }, 1000);
   },
+  getFavs = () => {
+    myFavs = [];
+    myFavs = JSON.parse(localStorage.getItem('myFavs')) || [];
+    let pokemonsUrls = []
+    myFavs.map(id => {
+      const pokemon = {
+        url : `https://pokeapi.co/api/v2/pokemon/${id}`
+      }
+      pokemonsUrls.push(pokemon)
+    })
+    return pokemonsUrls
+  },
   addToFav = (pokemonId) => {
     myFavs = []
     myFavs = JSON.parse(localStorage.getItem('myFavs')) || [];
@@ -71,12 +95,18 @@ const d = document,
       return id !== pokemonId
     })
     localStorage.setItem('myFavs', JSON.stringify(filteredFavs))
+    location.reload();
   }
 
 
   d.addEventListener('DOMContentLoaded', async(e) => {
-    const pokemons = await getAllPokemons();
-    await createCards(pokemons);
+    if(e.target.location.pathname === pokedexURL) {
+      const pokemons = await getAllPokemons();
+      await createCards(pokemons);
+    } else if (e.target.location.pathname === favsURL) {
+      const pokemons = await getFavs();
+      await createCards(pokemons)
+    }
   })
 
 d.addEventListener('click', async(e) => {

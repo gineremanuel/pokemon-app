@@ -147,6 +147,11 @@ body {
   font-weight: bold;
 }
 
+.favs h1 {
+  text-align: center;
+  font-weight: bold;
+}
+
 .search {
   display: flex;
   justify-content: center;
@@ -157,6 +162,7 @@ body {
 .search input {
   border-radius: 15px;
   width: 40%;
+  padding: 0px 10px;
 }
 
 .search button {
@@ -235,6 +241,15 @@ body {
 }
 
 @media (max-width: 1000px) {
+  .home {
+    background-color: #fff;
+    background-image: none;
+    height: 25vh;
+  }
+  .welcome {
+    width: 100%;
+  }
+
   .nav_desktop { 
     display: none;
   }
@@ -292,7 +307,7 @@ body {
     background-color: #fff;
     display: flex;
     left: 0;
-    justify-content: end;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     height: 0;
