@@ -66,7 +66,7 @@ const d = document,
         $pokeImg.setAttribute('src', pokemon.image)
         $pokeName.innerHTML = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
         $pokeTypes.innerHTML = `Type: ${pokemon.type}`
-        $removeFavBtn.textContent = 'Remove of favs'
+        $removeFavBtn.textContent = 'Remove'
         $addFavBtn.textContent = 'Add to favs'
         $pokeCard.appendChild($pokeImg)
         $pokeCard.appendChild($pokeName)

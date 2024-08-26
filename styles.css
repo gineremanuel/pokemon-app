@@ -166,7 +166,7 @@ body {
 }
 
 .search button {
-  padding: 7px 50px;
+  padding: 7px 0px;
   color: white;
   background-color: #00c9b9;
   border-radius: 30px;
@@ -245,6 +245,7 @@ body {
     background-color: #fff;
     background-image: none;
     height: 25vh;
+    margin-bottom: 20px;
   }
   .welcome {
     width: 100%;
